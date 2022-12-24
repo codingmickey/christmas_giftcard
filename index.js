@@ -1,26 +1,28 @@
 const card = document.querySelector('.card');
 const social = document.querySelectorAll('.social-icons > li');
 const glow = document.querySelector('#glow');
-const newMessage = document.querySelector('.new-message');
+const newMessage = document.querySelector('#shareCard');
+const closedCard = document.querySelector('.card-front');
 
-card.addEventListener('click', function () {
+closedCard.addEventListener('click', function () {
   if (!card.classList.contains('open')) {
     throwConfetti();
   }
+});
+
+card.addEventListener('click', function () {
   card.classList.toggle('open');
   glow.classList.toggle('animated-border-box-glow');
 });
 
 social.forEach(function (icon) {
-  icon.addEventListener('click', function () {
-    card.classList.toggle('open');
-    glow.classList.toggle('animated-border-box-glow');
+  icon.addEventListener('click', function (event) {
+    event.stopPropagation();
   });
 });
 
-newMessage.addEventListener('click', function () {
-  glow.classList.toggle('animated-border-box-glow');
-  card.classList.toggle('open');
+newMessage.addEventListener('click', function (event) {
+  event.stopPropagation();
 });
 
 Parse.initialize(
@@ -29,30 +31,35 @@ Parse.initialize(
 ); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
 Parse.serverURL = 'https://parseapi.back4app.com/';
 
-// Create a new User
-async function createParseUser() {
-  // Creates a new Parse "User" object, which is created by default in your Parse app
-  let user = new Parse.User();
-  // Set the input values to the new "User" object
-  user.set('username', document.getElementById('username').value);
-  user.set('email', document.getElementById('email').value);
-  user.set('password', document.getElementById('password').value);
+document.getElementById('form-message').onsubmit = async function (event) {
+  console.log(event.target);
+  event.preventDefault();
+
+  const Messages = Parse.Object.extend('messages');
+  let message = new Messages();
+
+  message.set('content', document.getElementById('message').value);
+  message.set('author', document.getElementById('name').value);
+  message.set('email', document.getElementById('email').value);
+
   try {
     // Call the save method, which returns the saved object if successful
-    user = await user.save();
-    if (user !== null) {
+    message = await message.save();
+    if (message !== null) {
       // Notify the success by getting the attributes from the "User" object, by using the get method (the id attribute needs to be accessed directly, though)
-      alert(`New object created with success! ObjectId: ${user.id}, ${user.get('username')}`);
+      alert(`New object created with success! ObjectId: ${message.id}, ${message.get('author')}`);
     }
   } catch (error) {
     alert(`Error: ${error.message}`);
   }
-}
 
-// Add on click listener to call the create parse user function
-document.getElementById('createButton').addEventListener('click', async function () {
-  createParseUser();
-});
+  return false;
+};
+
+// // Add on click listener to call the create parse user function
+// document.getElementById('createButton').addEventListener('click', async function () {
+//   createParseUser();
+// });
 
 function throwConfetti() {
   tsParticles.load('tsparticles', {

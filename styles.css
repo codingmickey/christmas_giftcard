@@ -63,6 +63,7 @@ body {
   background: #fff;
   text-align: center;
   padding: 30px;
+  padding-top: 10px;
   box-sizing: border-box;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   color: #444;
@@ -73,14 +74,14 @@ body {
 }
 
 .right-card h1 {
-  color: crimson;
   background: -webkit-linear-gradient(left, #bc4e9c, #f80759);
   /* background: -webkit-linear-gradient(left, rgb(237, 166, 166), rgb(212, 112, 132), #ef1928); */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 900;
   margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 5.4rem;
+  font-family: handWritingFont;
 }
 .right-card .just-some-emojis {
   margin-top: 0;
@@ -93,27 +94,30 @@ body {
 }
 .social-container {
   width: 230px;
-  margin: 10px auto;
+  margin: 10px auto 0;
   text-align: center;
   position: absolute;
   bottom: 0;
 }
+.social-container > p {
+  text-align: right;
+}
 .social-icons {
   padding: 0;
   list-style: none;
-  margin: 1em;
+  margin: 0.2rem 1em;
 }
 .social-icons li {
   display: inline-block;
   margin: 0.15em;
   position: relative;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .social-icons i {
   color: #fff;
   position: absolute;
-  top: 11.5px;
-  left: 11.5px;
+  top: 7.3px;
+  left: 7.3px;
   transition: all 265ms ease-out;
 }
 .social-icons a {
@@ -124,8 +128,8 @@ body {
   -ms-transform: scale(1);
   -webkit-transform: scale(1);
   content: ' ';
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 100%;
   display: block;
   background: linear-gradient(45deg, #36d1dc, #5b86e5);
@@ -136,9 +140,9 @@ body {
   transition: all 265ms ease-in;
 }
 .social-icons a:hover i {
-  transform: scale(2.2);
-  -ms-transform: scale(2.2);
-  -webkit-transform: scale(2.2);
+  transform: scale(2);
+  -ms-transform: scale(2);
+  -webkit-transform: scale(2);
   color: #36d1dc;
   background: -webkit-linear-gradient(45deg, #36d1dc, #5b86e5);
   -webkit-background-clip: text;
@@ -159,7 +163,7 @@ body {
 .animated-border-box-glow {
   overflow: hidden;
   /* Glow Blur */
-  filter: blur(40px);
+  filter: blur(30px);
 }
 
 .animated-border-box:before,
@@ -176,7 +180,7 @@ body {
   background-repeat: no-repeat;
   background-position: 0 0;
   /*border color, change middle color*/
-  background-image: conic-gradient(rgba(0, 0, 0, 0), #00eefe, rgba(0, 0, 0, 0) 25%);
+  background-image: conic-gradient(rgba(0, 0, 0, 0), #f80759, rgba(0, 0, 0, 0) 25%);
   /* change speed here */
   animation: rotate 4s linear infinite;
 }
@@ -190,6 +194,7 @@ body {
 /* For modal  */
 .modal-window {
   position: fixed;
+  height: 100vh;
   background-color: rgba(255, 255, 255, 0.5);
 
   top: 0;
@@ -209,8 +214,7 @@ body {
 }
 .modal-window > div {
   border: none;
-  border-bottom: 2px solid #000;
-  border-top: 1px solid #000;
+  border: 1px solid rgba(30, 19, 19, 0.2);
   margin: 20px 0;
   width: 400px;
   position: absolute;
@@ -219,6 +223,7 @@ body {
   transform: translate(-50%, -50%);
   padding: 2em;
   background: white;
+  box-shadow: rgba(9, 30, 66, 0.31) 0px 0px 1px 0px, rgba(9, 30, 66, 0.25) 0px 1px 1px 0px;
 }
 .modal-window header {
   font-weight: bold;
@@ -245,15 +250,13 @@ body {
 .modal-window > div {
   border-radius: 1rem;
 }
-.modal-window div:not(:last-of-type) {
-  margin-bottom: 15px;
-}
 .logo {
   max-width: 150px;
   display: block;
 }
 small {
-  color: lightgray;
+  color: rgb(26, 26, 26);
+  font-weight: bold;
 }
 .btn {
   background-color: white;
@@ -263,4 +266,82 @@ small {
 }
 .btn i {
   padding-right: 0.3em;
+}
+
+@font-face {
+  font-family: handWritingFont;
+  src: url(tomatoes-font/Tomatoes-O8L8.ttf);
+}
+
+/* Textbox */
+.input-field {
+  position: relative;
+}
+.input-field input {
+  width: 10rem;
+  height: 60px;
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 0 15px;
+  border: 2px solid #000;
+  background: transparent;
+  color: #000;
+  outline: none;
+}
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #000;
+  font-size: 19px;
+  pointer-events: none;
+  transition: 0.3s;
+}
+input:focus {
+  border: 2px solid #ffcc00;
+}
+input:focus ~ label,
+input:valid ~ label {
+  top: 0;
+  left: 15px;
+  font-size: 16px;
+  padding: 0 2px;
+  background: #fff;
+}
+
+button.btn {
+  background-color: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn.new-message {
+  background: linear-gradient(45deg, #bc4e9c, #f80759);
+  color: white;
+  text-align: center;
+}
+
+.share-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: calc(30%);
+  left: calc(10%);
+}
+
+.main-content {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+#img {
+  position: absolute;
 }
