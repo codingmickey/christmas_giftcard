@@ -1,6 +1,9 @@
 // id: 6pGBnVvd8i
 
-Parse.initialize(process.env.APP_ID, process.env.JS_ID); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
+Parse.initialize(
+  'kWIFzd8Jk4aqP0M29eRiyGIAg9ddUZOa0SWM0clb',
+  'OS3r0UHwP43mWIW6a6aHpCmoQaYwjjGRZhZNYIdi'
+); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
 Parse.serverURL = 'https://parseapi.back4app.com/';
 
 let id = '6pGBnVvd8i';
