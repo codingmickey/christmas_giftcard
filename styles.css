@@ -379,3 +379,108 @@ button.btn {
 .box button img {
   width: 25px;
 }
+
+@media screen and (max-width: 780px) {
+  .card {
+    width: 264px;
+    height: 420px;
+  }
+  .main-content {
+    font-size: 0.8rem;
+  }
+  .author-name {
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
+  .share-card {
+    left: calc(5%);
+    bottom: calc(25%);
+  }
+  .social-icons {
+    padding: 0 1.4rem 0 0;
+  }
+  .modal-window > div {
+    margin: 0;
+    width: 350px;
+  }
+  body {
+    padding: 50px 100px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    width: 190px;
+    height: 304px;
+  }
+  body {
+    padding: 50px 10px;
+  }
+  .card.open {
+    left: 95px;
+  }
+  .right-card h1 {
+    margin-top: 2.7rem;
+    font-size: large;
+  }
+  .main-content {
+    font-size: 0.69rem;
+  }
+  .social-container {
+    width: 150px;
+  }
+  .author-name {
+    font-size: 0.65rem;
+  }
+  .social-icons a:before {
+    width: 21px;
+    height: 21px;
+  }
+  .social-icons i {
+    top: 3.3px;
+    left: 3.3px;
+  }
+  .social-icons {
+    padding: 0;
+    margin-left: 1.1rem;
+  }
+  .share-card {
+    left: calc(10%);
+  }
+  .btn {
+    font-size: 0.65rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .card {
+    width: 180px;
+    height: 283px;
+  }
+  .modal-window > div {
+    width: 290px;
+  }
+  textarea {
+    width: 18em;
+  }
+  .card.open {
+    left: 89px;
+  }
+  .main-content {
+    font-size: 0.6rem;
+  }
+  .social-container {
+    margin-right: 4rem;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .card {
+    width: 150px;
+    height: 240px;
+  }
+  .card.open {
+    left: 75px;
+  }
+}
