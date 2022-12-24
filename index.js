@@ -1,3 +1,5 @@
+import { API_KEY, JS_KEY } from './keys.js';
+
 const card = document.querySelector('.card');
 const social = document.querySelectorAll('.social-icons > li');
 const glow = document.querySelector('#glow');
@@ -23,10 +25,7 @@ newMessage.addEventListener('click', function () {
   card.classList.toggle('open');
 });
 
-Parse.initialize(
-  'kWIFzd8Jk4aqP0M29eRiyGIAg9ddUZOa0SWM0clb',
-  'OS3r0UHwP43mWIW6a6aHpCmoQaYwjjGRZhZNYIdi'
-); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
+Parse.initialize(API_KEY, JS_KEY); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
 Parse.serverURL = 'https://parseapi.back4app.com/';
 
 // Create a new User
@@ -48,11 +47,6 @@ async function createParseUser() {
     alert(`Error: ${error.message}`);
   }
 }
-
-// Add on click listener to call the create parse user function
-document.getElementById('createButton').addEventListener('click', async function () {
-  createParseUser();
-});
 
 function throwConfetti() {
   tsParticles.load('tsparticles', {
