@@ -1,3 +1,22 @@
+// id: 6pGBnVvd8i
+
+Parse.initialize(process.env.APP_ID, process.env.JS_ID); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
+Parse.serverURL = 'https://parseapi.back4app.com/';
+
+let id = '6pGBnVvd8i';
+if (window.location.hash !== '' && window.location.hash !== '#open-modal') {
+  id = window.location.hash.split('?')[1].slice(3);
+}
+
+(async () => {
+  const Messages = Parse.Object.extend('messages');
+  const query = new Parse.Query(Messages);
+  query.get(id).then((message) => {
+    document.getElementById('content').innerHTML = message.get('content');
+    document.getElementById('author').innerHTML = message.get('author');
+  });
+})();
+
 const card = document.querySelector('.card');
 const social = document.querySelectorAll('.social-icons > li');
 const glow = document.querySelector('#glow');
@@ -25,12 +44,6 @@ newMessage.addEventListener('click', function (event) {
   event.stopPropagation();
 });
 
-Parse.initialize(
-  'kWIFzd8Jk4aqP0M29eRiyGIAg9ddUZOa0SWM0clb',
-  'OS3r0UHwP43mWIW6a6aHpCmoQaYwjjGRZhZNYIdi'
-); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
-Parse.serverURL = 'https://parseapi.back4app.com/';
-
 document.getElementById('form-message').onsubmit = async function (event) {
   console.log(event.target);
   event.preventDefault();
@@ -46,8 +59,12 @@ document.getElementById('form-message').onsubmit = async function (event) {
     // Call the save method, which returns the saved object if successful
     message = await message.save();
     if (message !== null) {
+      window.location.href = '#share-link';
+
+      document.getElementById('copy-link').innerHTML = `${window.location.href}#?id=${message.id}`;
+      // window.location.href = `${window.location.href}#share-link?id=${message.id}`;
       // Notify the success by getting the attributes from the "User" object, by using the get method (the id attribute needs to be accessed directly, though)
-      alert(`New object created with success! ObjectId: ${message.id}, ${message.get('author')}`);
+      // alert(`New object created with success! ObjectId: ${message.id}, ${message.get('author')}`);
     }
   } catch (error) {
     alert(`Error: ${error.message}`);
@@ -111,7 +128,7 @@ function throwConfetti() {
     },
     particles: {
       number: {
-        value: 75
+        value: 50
       },
       color: {
         value: '#f00'
@@ -212,3 +229,40 @@ function throwConfetti() {
     preset: 'confetti'
   });
 }
+
+// COPY TO CLIPBOARD
+// Text in an element
+function copyToClipboard(textSelector) {
+  const textToCopy = document.querySelector(textSelector);
+  const selection = window.getSelection();
+  const range = document.createRange();
+
+  range.selectNodeContents(textToCopy);
+  selection.removeAllRanges();
+  selection.addRange(range);
+
+  document.execCommand('copy');
+  selection.removeAllRanges();
+
+  // Custom feedback
+  alert('URL copied');
+}
+
+// Text as string
+// function copyToClipboard(text) {
+//   const element = document.createElement('input');
+//   element.value = text;
+//
+//   document.body.appendChild(element);
+//   element.select();
+//   document.execCommand('copy');
+//   document.body.removeChild(element);
+//
+//   // Custom feedback
+//   alert('Text copied: ' + text);
+// };
+
+// USAGE
+document.querySelector('.button').addEventListener('click', function () {
+  copyToClipboard('.text');
+});
