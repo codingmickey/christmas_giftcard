@@ -327,12 +327,18 @@ button.btn {
   text-align: center;
 }
 
+/* a.btn.new-message {
+  width: 10rem;
+  font-size: small;
+} */
+
 .share-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: absolute;
   bottom: calc(30%);
+  /* left: calc(15%); */
   left: calc(10%);
 }
 
@@ -351,7 +357,7 @@ button.btn {
   justify-content: flex-start;
   align-items: center;
   width: 300px;
-  height: 40px;
+  height: 50px;
   margin: 50px auto;
   border: 2px solid #efefef;
   padding: 0 10px;

@@ -16,7 +16,7 @@ if (window.location.hash !== '' && window.location.hash !== '#open-modal') {
   const query = new Parse.Query(Messages);
   query.get(id).then((message) => {
     document.getElementById('content').innerHTML = message.get('content');
-    document.getElementById('author').innerHTML = message.get('author');
+    document.getElementById('author').innerHTML = 'From, ' + message.get('author');
   });
 })();
 
@@ -64,7 +64,9 @@ document.getElementById('form-message').onsubmit = async function (event) {
     if (message !== null) {
       window.location.href = '#share-link';
 
-      document.getElementById('copy-link').innerHTML = `${window.location.href}#?id=${message.id}`;
+      document.getElementById(
+        'copy-link'
+      ).innerHTML = `${window.location.hostname}#?id=${message.id}`;
       // window.location.href = `${window.location.href}#share-link?id=${message.id}`;
       // Notify the success by getting the attributes from the "User" object, by using the get method (the id attribute needs to be accessed directly, though)
       // alert(`New object created with success! ObjectId: ${message.id}, ${message.get('author')}`);
