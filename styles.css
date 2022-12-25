@@ -356,7 +356,7 @@ button.btn {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 300px;
+  /* width: 300px; */
   height: 50px;
   margin: 50px auto;
   border: 2px solid #efefef;
@@ -413,12 +413,13 @@ button.btn {
   .card {
     width: 190px;
     height: 304px;
+    margin: 30% auto;
   }
   body {
     padding: 50px 10px;
   }
   .card.open {
-    left: 95px;
+    left: 90px;
   }
   .right-card h1 {
     margin-top: 2.7rem;
@@ -451,6 +452,9 @@ button.btn {
   .btn {
     font-size: 0.65rem;
   }
+  .modal-window > div {
+    width: 300px;
+  }
 }
 
 @media screen and (max-width: 380px) {
@@ -482,5 +486,34 @@ button.btn {
   }
   .card.open {
     left: 75px;
+  }
+  .main-content {
+    font-size: 0.45rem;
+  }
+  .right-card h1 {
+    margin-bottom: 0;
+  }
+  .social-icons {
+    margin-bottom: 0;
+  }
+
+  .social-container {
+    width: 118px;
+  }
+  .social-icons li {
+    font-size: 0.5em;
+  }
+  .social-icons a:before {
+    width: 13px;
+    height: 13px;
+  }
+  .modal-window > div {
+    width: 240px;
+  }
+  .share-card {
+    left: calc(15%);
+  }
+  .btn {
+    font-size: 0.45rem;
   }
 }
